@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Café Lúa — Specialty Coffee in Quito's Historic Centre</title>
+  <meta name="description" content="Café Lúa serves house-roasted specialty coffee, grandma's recipes and fresh pastries daily in the heart of Quito's Historic Centre. Come work, eat, and stay awhile." />
+  <meta property="og:title" content="Café Lúa — Specialty Coffee in Quito's Historic Centre" />
+  <meta property="og:description" content="House-roasted Ecuadorian beans, artisan pastries and all-day brunch in Centro Histórico, Quito." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://source.unsplash.com/1200x630/?specialty,coffee,quito,cafe" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Café Lúa — Specialty Coffee in Quito" />
+  <meta name="twitter:description" content="House-roasted Ecuadorian beans, artisan pastries and all-day brunch in Centro Histórico, Quito." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,800;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --brand: #6f4e37;
+      --accent: #e3b778;
+      --brand-light: color-mix(in srgb, #6f4e37 10%, white);
+      --accent-light: color-mix(in srgb, #e3b778 15%, white);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fafaf8;
+      color: #1c1917;
+    }
+
+    h1, h2, h3, .font-fraunces {
+      font-family: 'Fraunces', serif;
+    }
+
+    /* Reveal animation */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .revealed {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, var(--brand) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Nav glass */
+    .nav-glass {
+      background: rgba(250, 250, 248, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(111, 78, 55, 0.08);
+    }
+
+    /* Dot grid background */
+    .dot-bg {
+      background-image: radial-gradient(circle, rgba(111,78,55,0.12) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Button styles */
+    .btn-primary {
+      background: var(--brand);
+      color: white;
+      border-radius: 9999px;
+      padding: 0.75rem 1.75rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 14px rgba(111,78,55,0.25);
+      text-decoration: none;
+    }
+    .btn-primary:hover { transform: scale(1.03); box-shadow: 0 6px 20px rgba(111,78,55,0.35); }
+
+    .btn-wa {
+      background: #25D366;
+      color: white;
+      border-radius: 9999px;
+      padding: 0.75rem 1.75rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 14px rgba(37,211,102,0.3);
+      text-decoration: none;
+    }
+    .btn-wa:hover { transform: scale(1.03); }
+
+    .btn-secondary {
+      background: white;
+      color: #1c1917;
+      border-radius: 9999px;
+      padding: 0.75rem 1.75rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1.5px solid #e2d6cc;
+      transition: transform 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-secondary:hover { transform: scale(1.02); }
+
+    /* Service card */
+    .service-card {
+      background: white;
+      border-radius: 1.25rem;
+      padding: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      ring: 1px solid #f1ede9;
+      border: 1px solid #f1ede9;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(111,78,55,0.12); }
+
+    /* Accordion */
+    details summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 1.2rem 1.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #1c1917;
+      user-select: none;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after {
+      content: '+';
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--brand);
+      transition: transform 0.25s ease;
+    }
+    details[open] summary::after {
+      content: '−';
+    }
+    details .faq-body {
+      padding: 0 1.5rem 1.2rem;
+      color: #57534e;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    details {
+      border-bottom: 1px solid #f1ede9;
+    }
+    details:last-child { border-bottom: none; }
+
+    /* Lang switcher */
+    .lang-pill {
+      display: inline-flex;
+      border-radius: 9999px;
+      border: 1.5px solid #e2d6cc;
+      overflow: hidden;
+      background: white;
+    }
+    .lang-pill button {
+      padding: 0.3rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #78716c;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .lang-pill button[aria-pressed="true"] {
+      background: var(--brand);
+      color: white;
+    }
+
+    /* Floating WA */
+    #wa-float {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 1.75rem;
+      z-index: 50;
+      width: 3.5rem;
+      height: 3.5rem;
+      background: #25D366;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 28px rgba(37,211,102,0.45);
+      transition: transform 0.2s ease;
+      text-decoration: none;
+    }
+    #wa-float:hover { transform: scale(1.12); }
+
+    /* Hero blob */
+    .hero-blob-1 {
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(227,183,120,0.22) 0%, transparent 70%);
+      top: -120px; right: -100px;
+      pointer-events: none;
+    }
+    .hero-blob-2 {
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(111,78,55,0.10) 0%, transparent 70%);
+      bottom: -80px; left: -60px;
+      pointer-events: none;
+    }
+
+    /* Testimonial quote */
+    .quote-mark {
+      font-family: 'Fraunces', serif;
+      font-size: 5rem;
+      line-height: 0.8;
+      color: var(--accent);
+      display: block;
+      margin-bottom: -0.5rem;
+    }
+
+    /* Pulse badge */
+    @keyframes pulse-soft {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(227,183,120,0.45); }
+      50% { box-shadow: 0 0 0 8px rgba(227,183,120,0); }
+    }
+    .pulse-badge { animation: pulse-soft 2.8s ease infinite; }
+
+    @keyframes fade-up-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: none; }
+    }
+    .hero-animate { animation: fade-up-in .8s ease forwards; }
+    .hero-animate-delay { animation: fade-up-in .8s ease .25s both; }
+    .hero-animate-delay2 { animation: fade-up-in .8s ease .45s both; }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "Café Lúa",
+    "description": "Specialty coffee roasted in-house, grandmother's recipes and daily pastries in Quito's Historic Centre.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle García Moreno N6-22",
+      "addressLocality": "Quito",
+      "addressRegion": "Pichincha",
+      "addressCountry": "EC"
+    },
+    "telephone": "+593987654321",
+    "url": "https://cafelua.ec",
+    "sameAs": ["https://www.instagram.com/cafelua.ec/"],
+    "servesCuisine": "Ecuadorian, Cafe",
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=Calle+Garc%C3%ADa+Moreno+N6-22+Centro+Hist%C3%B3rico+Quito"
+  }
+  </script>
+</head>
+
+<body class="antialiased">
+
+<!-- ========== FLOATING WHATSAPP ========== -->
+<a id="wa-float" href="https://wa.me/593987654321?text=Hola%2C%20vi%20su%20sitio%20y%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Caf%C3%A9%20L%C3%BAa" aria-label="WhatsApp Café Lúa" target="_blank" rel="noopener">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ========== NAV ========== -->
+<nav class="nav-glass sticky top-0 z-40 w-full" style="height:68px;">
+  <div class="max-w-6xl mx-auto px-6 h-full flex items-center justify-between gap-4">
+
+    <!-- Logo -->
+    <a href="#top" class="flex items-center gap-2 shrink-0 text-decoration-none">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="18" cy="18" r="18" fill="#6f4e37"/>
+        <path d="M11 23c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="#e3b778" stroke-width="2" stroke-linecap="round"/>
+        <path d="M18 16V12" stroke="#e3b778" stroke-width="2" stroke-linecap="round"/>
+        <path d="M14 13c0 0 1-2 4-2s4 2 4 2" stroke="#e3b778" stroke-width="1.5" stroke-linecap="round"/>
+        <ellipse cx="18" cy="23.5" rx="5" ry="2" fill="#e3b778" opacity="0.25"/>
+        <rect x="13" y="25" width="10" height="2" rx="1" fill="#e3b778"/>
+      </svg>
+      <span class="font-fraunces font-800 text-xl tracking-tight" style="color:var(--brand)">Café Lúa</span>
+    </a>
+
+    <!-- Nav links (hidden on mobile, scrollable) -->
+    <div class="hidden md:flex items-center gap-6 text-sm font-medium text-stone-600">
+      <a href="#about" class="hover:text-stone-900 transition-colors"><span data-i18n-lang="en">About</span><span data-i18n-lang="es">Nosotros</span></a>
+      <a href="#services" class="hover:text-stone-900 transition-colors"><span data-i18n-lang="en">Menu</span><span data-i18n-lang="es">Menú</span></a>
+      <a href="#why-us" class="hover:text-stone-900 transition-colors"><span data-i18n-lang="en">Why Lúa</span><span data-i18n-lang="es">Por qué Lúa</span></a>
+      <a href="#faq" class="hover:text-stone-900 transition-colors">FAQ</a>
+      <a href="#contact" class="hover:text-stone-900 transition-colors"><span data-i18n-lang="en">Visit us</span><span data-i18n-lang="es">Visítanos</span></a>
+    </div>
+
+    <!-- Right: lang switcher + CTA -->
+    <div class="flex items-center gap-3 shrink-0">
+      <div class="lang-pill" role="group" aria-label="Language switcher">
+        <button type="button" data-lang-switch="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang-switch="es" aria-pressed="false">ES</button>
+      </div>
+      <a href="https://wa.me/593987654321?text=Hola%2C%20quisiera%20saber%20m%C3%A1s%20sobre%20Caf%C3%A9%20L%C3%BAa" target="_blank" rel="noopener" class="btn-primary text-xs px-4 py-2 hidden sm:inline-flex">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span data-i18n-lang="en">Reserve a table</span>
+        <span data-i18n-lang="es">Reservar mesa</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ========== HERO ========== -->
+<header id="top" class="relative overflow-hidden bg-stone-50 dot-bg">
+  <div class="hero-blob-1"></div>
+  <div class="hero-blob-2"></div>
+  <div class="max-w-6xl mx-auto px-6 py-20 md:py-28 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+      <!-- Left -->
+      <div>
+        <!-- Badge -->
+        <div class="hero-animate inline-flex items-center gap-2 rounded-full bg-white border border-stone-200 shadow-sm px-4 py-1.5 mb-6">
+          <span class="w-2 h-2 rounded-full pulse-badge" style="background:var(--accent); display:inline-block;"></span>
+          <span class="text-xs font-semibold uppercase tracking-widest text-stone-500">
+            <span data-i18n-lang="en">Specialty Café · Quito, Ecuador</span>
+            <span data-i18n-lang="es">Café de Especialidad · Centro Histórico, Quito</span>
+          </span>
+        </div>
+
+        <!-- H1 -->
+        <h1 class="hero-animate-delay font-fraunces font-extrabold text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.08] text-stone-900 mb-5">
+          <span data-i18n-lang="en">
+            Your cup of<br><span class="gradient-text">Quito</span><br>starts here.
+          </span>
+          <span data-i18n-lang="es">
+            El sabor de<br><span class="gradient-text">Quito</span><br>en cada taza.
+          </span>
+        </h1>
+
+        <!-- Sub-line -->
+        <p class="hero-animate-delay2 text-lg md:text-xl text-stone-600 leading-relaxed mb-8 max-w-lg">
+          <span data-i18n-lang="en">House-roasted Ecuadorian coffee, heirloom recipes from abuela Lúa, and fresh pastries every morning — right in the Historic Centre.</span>
+          <span data-i18n-lang="es">Grano ecuatoriano tostado en barra, recetas heredadas de la abuela Lúa y pastelería recién horneada cada mañana, en el corazón del Centro Histórico.</span>
+        </p>
+
+        <!-- CTAs -->
+        <div class="hero-animate-delay2 flex flex-wrap gap-3 mb-8">
+          <a href="https://wa.me/593987654321?text=Hola%2C%20quisiera%20reservar%20una%20mesa%20en%20Caf%C3%A9%20L%C3%BAa" target="_blank" rel="noopener" class="btn-wa">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span data-i18n-lang="en">Book a table</span>
+            <span data-i18n-lang="es">Reservar mesa</span>
+          </a>
+          <a href="#services" class="btn-secondary">
+            <span data-i18n-lang="en">See our menu</span>
+            <span data-i18n-lang="es">Ver menú</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Social proof -->
+        <div class="hero-animate-delay2 flex flex-wrap gap-3">
+          <div class="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-sm border border-stone-100 text-sm font-medium text-stone-700">
+            <span>⭐ 4.9/5</span>
+            <span class="text-stone-300">·</span>
+            <span data-i18n-lang="en">Google Reviews</span>
+            <span data-i18n-lang="es">Google</span>
+          </div>
+          <div class="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-sm border border-stone-100 text-sm font-medium text-stone-700">
+            <span>☕</span>
+            <span data-i18n-lang="en">800+ happy customers</span>
+            <span data-i18n-lang="es">+800 clientes felices</span>
+          </div>
+          <div class="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-sm border border-stone-100 text-sm font-medium text-stone-700">
+            <span>📅</span>
+            <span data-i18n-lang="en">Open since 2019</span>
+            <span data-i18n-lang="es">Abiertos desde 2019</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: image + floating badges -->
+      <div class="relative flex justify-center">
+        <div class="relative w-full max-w-md">
+          <img src="https://source.unsplash.com/600x680/?specialty,coffee,latte,art,warm" alt="A beautifully crafted latte at Café Lúa, Quito" class="w-full h-[480px] object-cover rounded-3xl ring-1 ring-stone-200 shadow-2xl" />
+
+          <!-- Floating badge 1 -->
+          <div class="absolute -bottom-5 -left-6 bg-white rounded-2xl shadow-xl border border-stone-100 px-4 py-3 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background:var(--accent-light)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6f4e37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2
